@@ -1,0 +1,195 @@
+html < !doctype html><html lang="so"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Adiga darteed,
+Jahido</title><meta name="description" content="Bog jacayl oo qalbi ka yimid — Jahido, adigaa sheekadayda u qurxoon."><style> :root {
+   --bg1: #0f1020;
+   --bg2: #1b1e3b;
+   --accent: #ff4d6d;
+   --soft: #ffd9e2;
+   --text: #eef2ff;
+   --muted: #c7c9de;
+   --card: #15172c;
+}
+
+* {
+   box-sizing: border-box
+}
+
+body {
+   margin: 0;
+   min-height: 100vh;
+   color: var(--text);
+   background: radial-gradient(1200px circle at 20% 10%, var(--bg2), var(--bg1));
+   font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+   line-height: 1.6;
+   position: relative;
+   overflow-x: hidden;
+}
+
+.bg-hearts {
+   position: fixed;
+   inset: 0;
+   pointer-events: none
+}
+
+.bg-hearts::before,
+.bg-hearts::after {
+   content: "";
+   position: absolute;
+   left: 50%;
+   width: 180vmax;
+   height: 180vmax;
+   background:
+      radial-gradient(circle at 10% 20%, rgba(255, 77, 109, 0.15) 0 15%, transparent 16%),
+      radial-gradient(circle at 80% 30%, rgba(255, 217, 226, 0.12) 0 12%, transparent 13%),
+      radial-gradient(circle at 30% 80%, rgba(255, 77, 109, 0.10) 0 14%, transparent 15%);
+   transform: translate(-50%, -40%);
+   animation: drift 26s linear infinite;
+   filter: blur(8px);
+}
+
+.bg-hearts::after {
+   animation-duration: 38s;
+   opacity: 0.7
+}
+
+@keyframes drift {
+   0% {
+      transform: translate(-50%, -40%) rotate(0deg)
+   }
+
+   50% {
+      transform: translate(-48%, -42%) rotate(180deg)
+   }
+
+   100% {
+      transform: translate(-50%, -40%) rotate(360deg)
+   }
+}
+
+.card {
+   max-width: 900px;
+   margin: 8vh auto;
+   background: linear-gradient(180deg, rgba(21, 23, 44, 0.85), rgba(21, 23, 44, 0.75));
+   border: 1px solid rgba(255, 255, 255, 0.06);
+   border-radius: 18px;
+   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+   backdrop-filter: blur(6px);
+   padding: 2.4rem 2rem;
+}
+
+.hero {
+   text-align: center;
+   padding: 1rem 0 1.5rem
+}
+
+.hero h1 {
+   font-size: 2.2rem;
+   letter-spacing: 0.4px;
+   margin: 0 0 0.6rem
+}
+
+.lead {
+   color: var(--muted);
+   max-width: 680px;
+   margin: 0 auto 1.4rem;
+   font-size: 1.05rem
+}
+
+.btn {
+   display: inline-block;
+   text-decoration: none;
+   color: white;
+   background: linear-gradient(135deg, var(--accent), #ff8fa3);
+   padding: 0.7rem 1.1rem;
+   border-radius: 999px;
+   box-shadow: 0 10px 20px rgba(255, 77, 109, 0.35);
+   transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.btn:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 14px 26px rgba(255, 77, 109, 0.45)
+}
+
+.letter {
+   margin-top: 2rem;
+   padding: 1rem 1rem 0.4rem;
+   border-top: 1px dashed rgba(255, 255, 255, 0.15)
+}
+
+.letter h2 {
+   font-size: 1.5rem;
+   margin-bottom: 0.6rem
+}
+
+.signature {
+   margin-top: 0.8rem;
+   color: var(--soft);
+   font-style: italic;
+   letter-spacing: 0.4px
+}
+
+.moments {
+   margin-top: 1.8rem
+}
+
+.moments h2 {
+   font-size: 1.4rem;
+   margin-bottom: 0.8rem
+}
+
+.grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+   gap: 12px
+}
+
+.tile {
+   background: rgba(255, 255, 255, 0.04);
+   border: 1px solid rgba(255, 255, 255, 0.06);
+   border-radius: 14px;
+   padding: 1rem
+}
+
+.tile .emoji {
+   font-size: 1.6rem;
+   display: inline-block;
+   margin-bottom: 0.4rem
+}
+
+.tile h3 {
+   margin: 0 0 0.4rem;
+   font-size: 1.05rem
+}
+
+.tile p {
+   margin: 0;
+   color: var(--muted)
+}
+
+.foot {
+   text-align: center;
+   color: var(--muted);
+   font-size: 0.9rem;
+   padding: 1rem 0 0.4rem
+}
+
+.spark {
+   position: fixed;
+   inset: 0;
+   pointer-events: none
+}
+
+</style></head><body><div class="bg-hearts"></div><main class="card"><section class="hero"><h1>Jacaylkayga adigaa leh,
+Jahido</h1><p class="lead">Markaan afka furo,
+erayada oo dhan waxay isu rogaan adiga. Qalbiga wuxuu heesaa magacaaga.</p><a class="btn" href="#letter">Fur fariinta qalbiga</a></section><section id="letter" class="letter"><h2>Fariin ka timid qalbi daacad ah</h2><p>Waxaynu kulannay si aan ku talo jirin,
+balse maalin kasta waxaad noqotay qaybta ugu macaan nolosheyda. Qosolkaaga waa iftiinka subaxdii,
+indhahaagana waa xiddigaha habeenkii. Waxaan rabaa inaan noqdo degaanka aad ku nasato,
+gacanta aad ku aaminato,
+iyo sheekada aad ku faraxdo. </p><p>Haddii jacaylku leeyahay cod,
+wuxuu ku heesayaa magacaaga: <strong>Jahido</strong>. Haddii jacaylku leeyahay midab,
+wuxuu ku qurxan yahay sida qalbi kasta oo aad taabato. </p><div class="signature">— Qalbigaaga</div></section><section class="moments"><h2>Xusuus qurux badan</h2><div class="grid"><div class="tile"><span class="emoji">🌅</span><h3>Subaxtii quruxda badnayd</h3><p>Ma xasuusataa iftiinkii iyo dabayshii deggan? Sidaas ayaan u jeclahay kaaga.</p></div><div class="tile"><span class="emoji">🌙</span><h3>Habeenkii xiddigaha</h3><p>Habeen kasta,
+xiddigo ayaan tirinayaa—magacaaga ayaa noqda 1aad,
+2aad,
+3aad…</p></div><div class="tile"><span class="emoji">💌</span><h3>Fariin yar</h3><p>Halkan oo dhan,
+hal eray: Waan ku jeclahay.</p></div></div></section></main><footer class="foot"><p>Ku sameeyay jacayl — adiga darteed,
+Jahido ❤️</p></footer></body></html>
