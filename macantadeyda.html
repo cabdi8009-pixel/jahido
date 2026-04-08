@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Aquafina+Script&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; height: 100vh; font-family: 'Inter', sans-serif; }
+
+        /* --- Xiddigaha Gadaasha (Stars Background) --- */
+        #star-field {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* 1. Loading Screen (Authenticating...) */
+        #loader-container {
+            position: fixed;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #2b0a1a 0%, #000 100%);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; transition: opacity 1s ease;
+        }
+        .loading-box {
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
+            padding: 30px; border-radius: 20px; text-align: center; width: 320px;
+        }
+        .loading-text { color: #fff; margin-bottom: 15px; font-size: 16px; }
+        .progress-bar { width: 100%; height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; overflow: hidden; }
+        .progress-fill {
+            width: 0%; height: 100%; background: #ff1493; box-shadow: 0 0 15px #ff1493;
+            animation: fillProgress 3s forwards ease-in-out;
+        }
+        @keyframes fillProgress { 0% { width: 0%; } 100% { width: 100%; } }
+
+        /* 2. Main Scene (Jaahido Animation) */
+        #mainScene {
+            display: none; position: relative; width: 100vw; height: 100vh;
+            perspective: 1200px; transform-style: preserve-3d;
+        }
+
+        /* Qoraalka JAAHIDO - Midabka Binki (Pink) */
+        .jaahido-text {
+            position: absolute;
+            color: #ff69b4; /* Midabka Binki */
+            font-family: 'Aquafina Script', cursive;
+            white-space: nowrap; opacity: 0;
+            text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493; /* Iftiinka Binki */
+            animation: move3D forwards linear;
+        }
+        .small-text { font-size: 22px !important; opacity: 0.4 !important; z-index: 1; }
+        .big-text { font-size: 65px !important; z-index: 5; }
+
+        .photo-33d {
+            position: absolute;
+            width: 100px;
+            height: auto;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            opacity: 0.3; z-index: 10;
+            animation: move3D forwards linear;
+        }
+
+        .heart {
+            position: absolute; font-size: 25px; color: #ff0000;
+            filter: drop-shadow(0 0 10px #ff0000); animation: move3D forwards linear;
+        }
+
+        @keyframes move3D {
+            0% { transform: translateZ(-2000px) translateY(-200px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateZ(800px) translateY(400px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="star-field"></div>
+
+    <div id="loader-container">
+        <div class="loading-box">
+            <div class="loading-text">Scan love 🥺💖💖💖<br>Authenticating...</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+        </div>
+    </div>
+
+    <div id="mainScene"></div>
+
+    <script>
+        const loader = document.getElementById('loader-container');
+        const mainScene = document.getElementById('mainScene');
+        const starField = document.getElementById('star-field');
+
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+            starField.appendChild(star);
+        }
+
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                mainScene.style.display = 'block';
+                startAnimation();
+            }, 1000);
+        }, 3000);
+
+        const images = [
+            "https://i.ibb.co/pjpVZYB3/82bf6f24-b8a9-4f78-9d9b-a3909c5bf4f6.jpg",
+            "https://i.ibb.co/zTS0QFmr/f72e3d52-d047-4903-a330-1b5a99fd2d3d.jpg",
+            "https://i.ibb.co/G4NJDt5X/c1032721-ec3d-44e1-9928-b263b2364c6b.jpg",
+            "https://i.ibb.co/8g64B76b/24bea2dc-da5b-4331-8d5d-18ed00e48044.jpg"
+        ];
+
+        function startAnimation() {
+            setInterval(() => {
+                for (let i = 0; i < 3; i++) {
+                    const small = document.createElement('div');
+                    small.className = 'jaahido-text small-text';
+                    small.innerHTML = "Jaahido ♡";
+                    small.style.left = (Math.random() * 110 - 5) + '%';
+                    small.style.top = Math.random() * 100 + '%';
+                    small.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                    mainScene.appendChild(small);
+                    setTimeout(() => small.remove(), 8000);
+                }
+
+                const big = document.createElement('div');
+                big.className = 'jaahido-text big-text';
+                big.innerHTML = "Jaahido";
+                big.style.left = Math.random() * 80 + '%';
+                big.style.top = Math.random() * 80 + '%';
+                big.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                mainScene.appendChild(big);
+                setTimeout(() => big.remove(), 5000);
+
+                if(Math.random() > 0.7) {
+                    const h = document.createElement('div');
+                    h.className = 'heart';
+                    h.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+                    h.style.left = Math.random() * 100 + '%';
+                    h.style.top = Math.random() * 100 + '%';
+                    h.style.animationDuration = '4s';
+                    mainScene.appendChild(h);
+                    setTimeout(() => h.remove(), 4000);
+                }
+
+                if(Math.random() > 0.85) {
+                    const img = document.createElement('img');
+                    img.className = 'photo-33d';
+                    img.src = images[Math.floor(Math.random() * images.length)];
+                    img.style.left = Math.random() * 80 + '%';
+                    img.style.top = Math.random() * 70 + '%';
+                    img.style.animationDuration = '6s';
+                    mainScene.appendChild(img);
+                    setTimeout(() => img.remove(), 6000);
+                }
+            }, 400);
+        }
+    </script>
+</body>
+</html>
