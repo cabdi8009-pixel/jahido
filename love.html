@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Aquafina+Script&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; height: 100vh; font-family: 'Inter', sans-serif; }
+
+        /* --- Qaybta Xiddigaha (Stars Background) --- */
+        #star-field {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        /* 1. Loading Screen (Authenticating...) */
+        #loader-container {
+            position: fixed;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #2b0a1a 0%, #000 100%);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; transition: opacity 1s ease;
+        }
+        .loading-box {
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
+            padding: 30px; border-radius: 20px; text-align: center; width: 320px;
+        }
+        .loading-text { color: #fff; margin-bottom: 15px; font-size: 16px; }
+        .progress-bar { width: 100%; height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; overflow: hidden; }
+        .progress-fill {
+            width: 0%; height: 100%; background: #ff1493; box-shadow: 0 0 15px #ff1493;
+            animation: fillProgress 3s forwards ease-in-out;
+        }
+        @keyframes fillProgress { 0% { width: 0%; } 100% { width: 100%; } }
+
+        /* 2. Main Scene (Jaahido Animation) */
+        #mainScene {
+            display: none; position: relative; width: 100vw; height: 100vh;
+            perspective: 1200px; transform-style: preserve-3d;
+        }
+
+        /* Qoraalka JAAHIDO - Aquafina Script & White Glow */
+        .jaahido-text {
+            position: absolute; color: #fff;
+            font-family: 'Aquafina Script', cursive;
+            white-space: nowrap; opacity: 0;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4;
+            animation: moveRain forwards linear; /* Bedelaad halkan */
+        }
+        .small-text { font-size: 22px !important; opacity: 0.3 !important; z-index: 1; }
+        .big-text { font-size: 65px !important; z-index: 5; }
+
+        .photo-3d {
+            position: absolute;
+            width: 100px;
+            height: auto;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            opacity: 0.3; z-index: 10;
+            animation: moveRain forwards linear;
+        }
+
+        .heart {
+            position: absolute; font-size: 25px; color: #ff0000;
+            filter: drop-shadow(0 0 10px #ff0000); animation: moveRain forwards linear;
+        }
+
+        /* Motion-ka Roobka (Rain effect: Kor ilaa Hoos) */
+        @keyframes moveRain {
+            0% {
+                transform: translateY(-150px) translateZ(-500px);
+                opacity: 0;
+            }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% {
+                transform: translateY(110vh) translateZ(200px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="star-field"></div>
+
+    <div id="loader-container">
+        <div class="loading-box">
+            <div class="loading-text">Scan love 🥺💖💖💖<br>Authenticating...</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+        </div>
+    </div>
+
+    <div id="mainScene"></div>
+
+    <script>
+        const loader = document.getElementById('loader-container');
+        const mainScene = document.getElementById('mainScene');
+        const starField = document.getElementById('star-field');
+
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+            starField.appendChild(star);
+        }
+
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                mainScene.style.display = 'block';
+                startAnimation();
+            }, 1000);
+        }, 3000);
+
+        const images = [
+            "https://i.ibb.co/4RcRV7n0/IMG-1043.jpg",
+            "https://i.ibb.co/RTTgHHmn/temp-image-DCB77-EFE-7-D37-4080-A7-DA-665-AC85427-E9.jpg",
+            "https://i.ibb.co/1fSJvQfp/IMG-0805-Original.jpg"
+        ];
+
+        function startAnimation() {
+            setInterval(() => {
+                // 1. Qoraallada yaryar (Rain effect shaashadda oo dhan)
+                for (let i = 0; i < 4; i++) {
+                    const small = document.createElement('div');
+                    small.className = 'jaahido-text small-text';
+                    small.innerHTML = "Jaahido ♡";
+                    small.style.left = Math.random() * 100 + '%'; // Meel kasta oo ballaca ah
+                    small.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                    mainScene.appendChild(small);
+                    setTimeout(() => small.remove(), 7000);
+                }
+
+                // 2. Qoraalka weyn
+                const big = document.createElement('div');
+                big.className = 'jaahido-text big-text';
+                big.innerHTML = "Jaahido";
+                big.style.left = Math.random() * 85 + '%';
+                big.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                mainScene.appendChild(big);
+                setTimeout(() => big.remove(), 5000);
+
+                // 3. Wadnaha
+                if(Math.random() > 0.7) {
+                    const h = document.createElement('div');
+                    h.className = 'heart';
+                    h.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+                    h.style.left = Math.random() * 100 + '%';
+                    h.style.animationDuration = '5s';
+                    mainScene.appendChild(h);
+                    setTimeout(() => h.remove(), 5000);
+                }
+
+                // 4. Sawirada
+                if(Math.random() > 0.85) {
+                    const img = document.createElement('img');
+                    img.className = 'photo-3d';
+                    img.src = images[Math.floor(Math.random() * images.length)];
+                    img.style.left = Math.random() * 90 + '%';
+                    img.style.animationDuration = '7s';
+                    mainScene.appendChild(img);
+                    setTimeout(() => img.remove(), 7000);
+                }
+            }, 300);
+        }
+    </script>
+</body>
+</html>
